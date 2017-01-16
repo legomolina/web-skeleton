@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "Slim/Slim": "^3.*",
-        "Slim/php-view": "^2.*"
+        "Slim/Slim": "^3.7.0",
+        "Slim/php-view": "^2.2.0"
     }
 }

@@ -2,7 +2,7 @@
 .button {
   background-color: transparent;
   cursor: pointer;
-  transition: $transitionAll;
+  transition: all .3s ease;
 
   @each $color, $states in $buttonStyle {
     @if $color != grey {
@@ -63,7 +63,7 @@ input[type="submit"], input[type="button"], input[type="reset"] {
   border: 1px solid transparentize(color(black), 0.2);
   border-radius: 2px;
 
-  transition: $transitionAll;
+  transition: all .3s ease;
 
   &:hover {
     background-color: color(light_grey);

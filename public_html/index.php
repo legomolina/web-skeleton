@@ -1,44 +1,49 @@
 <?php
 
-use MyApp\Utils;
-use MyApp\Controllers;
+//Import classes
+use app\controllers;
+use app\config\Constants;
+use app\config\Config;
+use app\utils;
 
+//If session is started here, you can access $_SESSION supervariable everywhere
 session_start();
 
+//Get Composer and custom autoloader and run them
 require '../vendor/autoload.php';
-require '../app/utilsInclude.php';
-require '../app/controllers/TestController.php';
+require_once '../app/project_autoloader.php';
+$autloader = new app\Autoloader();
+spl_autoload_register(array($autloader, 'handle'));
 
-include '../app/config/constants.php';
+//Configuration for Slim
+$app = new \Slim\App(Config::getConfig());
 
-$config = require '../app/config/config.php';
-
-$app = new \Slim\App($config);
-
-//Make the Database connection and make $connection var global so it will be accessible with 'global $connection;'
-$DBconnection = new Utils\DBConnection(
+//Create the Database connection and make $connection var global so it will be accessible with 'global $connection;'
+$DBconnection = new utils\DBConnection(
     array(
-        "dbHost" => DB_HOST,
-        "dbPassword" => DB_PASS,
-        "dbUser" => DB_USER,
-        "dbName" => DB_NAME
+        "dbHost" => Constants::DB_HOST,
+        "dbPassword" => Constants::DB_PASS,
+        "dbUser" => Constants::DB_USER,
+        "dbName" => Constants::DB_NAME,
+        "dbCharset" => Constants::DB_CHARSET
     )
 );
 $connection = $DBconnection->mysqlConnection();
 
+//Include routes file
 require '../app/routesInclude.php';
 
 //Dependency injection via Slim Container
 $container = $app->getContainer();
 
-//Renden views
+//Render views
 $container['view'] = function ($container) {
     return new \Slim\Views\PhpRenderer('../app/views/');
 };
 
 //Test controller
 $container['TestController'] = function($container) {
-    return new Controllers\TestController();
+    return new controllers\TestController($container);
 };
 
 $app->run();

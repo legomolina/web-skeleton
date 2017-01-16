@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Controllers;
+namespace app\controllers;
 
 use Psr\Http\Message\ServerRequestInterface as ReqInterface;
 use Psr\Http\Message\ResponseInterface as ResInterface;
@@ -9,7 +9,7 @@ use Psr\Http\Message\ResponseInterface as ResInterface;
  * Class ControlPanelController
  * @package Cocode\controllers
  */
-class Test
+class TestController
 {
     /**
      * @var $slimApp References to slim app instance
@@ -34,6 +34,6 @@ class Test
      */
     public function testMethod(ReqInterface $request, ResInterface $response, $arguments)
     {
-        return $this->slimApp->view->render($response, 'views/view.php');
+        return $this->slimApp->view->render($response, 'view.php');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace MyApp\Utils;
+namespace app\utils;
 
 class DBConnection
 {
@@ -21,7 +21,8 @@ class DBConnection
             "dbHost" => "localhost",
             "dbPassword" => "password",
             "dbUser" => "username",
-            "dbName" => "database"
+            "dbName" => "database",
+            "dbCharset" => "utf8"
         ];
 
         if ($options)
@@ -56,7 +57,7 @@ class DBConnection
             return false;
         }
 
-        $connection->set_charset('utf8');
+        $connection->set_charset($this->options['dbCharset']);
 
         return $connection;
     }
