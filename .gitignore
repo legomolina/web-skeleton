@@ -1,0 +1,6 @@
+.idea/
+
+node_modules/
+vendor/
+
+app/config/constants.php
