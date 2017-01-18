@@ -12,7 +12,7 @@ npm install
 ```
 and it will include all vendor and npm packages.
 
-<div id="console">If you want to execute gulp from your console you need to install it first (I prefer using it directly from the IDE):</div>
+<p id="console">If you want to execute gulp from your console you need to install it first (I prefer using it directly from the IDE):</p>
 ```shell
 npm install --global gulp-cli
 ```
