@@ -12,6 +12,11 @@ npm install
 ```
 and it will include all vendor and npm packages.
 
+[Optional]
+If you want to execute gulp from your console you need to install it first:
+```shell
+npm install --global gulp-cli
+```
 ###Files hierarchy
 <div>I've configured this skeleton to split backend (private) part from frontend (public) part.</div>
 ![Tree view](http://imgur.com/ZcleGvB.png "Tree view")
