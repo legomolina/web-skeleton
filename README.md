@@ -18,7 +18,7 @@ and it will include all vendor and npm packages.
 npm install --global gulp-cli
 ```
 
-###Files hierarchy
+### Files hierarchy
 
 <div>I've configured this skeleton to split backend (private) part from frontend (public) part.</div>
 
@@ -28,7 +28,7 @@ npm install --global gulp-cli
 
 Besides, I modified permissions on /public_html/uploads directory to give the control to www-data user and group (Debian x64) in order to allow php to write and read files (and just php).
 
-###Custom autoloader
+### Custom autoloader
 
 I've created a custom autoloader
 
@@ -36,13 +36,13 @@ I've created a custom autoloader
 
 to load all neccessary classes without requiring them one by one, so you just need to use namespaces as I'm using at examples and you are done.
 
-###SASS and LiveReload
+### SASS and LiveReload
 
 Installing npm dependencies you download *gulp*. Once you have it, just type ```gulp``` [on a shell window](#console) in your project's root and hit enter and now, you have a file watcher for all your project files and SASS compiler.
 - SASS takes [/public_html/styles/sass/style.scss](https://github.com/legomolina/web-skeleton/blob/master/public_html/styles/sass/style.scss) and all imports done in this file (and just this file - you need to import all scss files you want to use in your project into this one-) and generates a style.css (file you need to link into your project) file into css folder.
 - Live reload is a file watcher that reloads your linked web browser everytime a file is saved, included or deleted. You need to download browser extension for LiveReload in order to run it.
 
-###Database connection
+### Database connection
 
 Database connection is located on [/app/utils/DBConnection.php](https://github.com/legomolina/web-skeleton/blob/master/app/utils/DBConnection.php)
 and it uses mysqli function to create the connection.
