@@ -30,11 +30,7 @@ Besides, I modified permissions on /public_html/uploads directory to give the co
 
 ### Custom autoloader
 
-I've created a custom autoloader
-
-([/app/project_autoloader.php](https://github.com/legomolina/web-skeleton/blob/master/app/project_autoloader.php))
-
-to load all neccessary classes without requiring them one by one, so you just need to use namespaces as I'm using at examples and you are done.
+I've created a custom autoloader ([/app/project_autoloader.php](https://github.com/legomolina/web-skeleton/blob/master/app/project_autoloader.php)) to load all neccessary classes without requiring them one by one, so you just need to use namespaces as I'm using at examples and you are done.
 
 ### SASS and LiveReload
 
