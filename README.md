@@ -13,20 +13,26 @@ npm install
 and it will include all vendor and npm packages.
 
 <p id="console">If you want to execute gulp from your console you need to install it first (I prefer using it directly from the IDE):</p>
+
 ```shell
 npm install --global gulp-cli
 ```
 
-
 ###Files hierarchy
 <div>I've configured this skeleton to split backend (private) part from frontend (public) part.</div>
+
 ![Tree view](http://imgur.com/ZcleGvB.png "Tree view")
+
 <div>This is because apache virtualhost points to /public_html in *documentRoot* directive and prevents users accessing /app directory from URL.</div>
 
 Besides, I modified permissions on /public_html/uploads directory to give the control to www-data user and group (Debian x64) in order to allow php to write and read files (and just php).
 
 ###Custom autoloader
-I've created a custom autoloader ([/app/project_autoloader.php](https://github.com/legomolina/web-skeleton/blob/master/app/project_autoloader.php)) to load all neccessary classes without requiring them one by one, so you just need to use namespaces as I'm using at examples and you are done.
+I've created a custom autoloader
+
+([/app/project_autoloader.php](https://github.com/legomolina/web-skeleton/blob/master/app/project_autoloader.php))
+
+to load all neccessary classes without requiring them one by one, so you just need to use namespaces as I'm using at examples and you are done.
 
 ###SASS and LiveReload
 Installing npm dependencies you download *gulp*. Once you have it, just type ```gulp``` [on a shell window](#console) in your project's root and hit enter and now, you have a file watcher for all your project files and SASS compiler.
