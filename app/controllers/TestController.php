@@ -9,21 +9,15 @@ use Psr\Http\Message\ResponseInterface as ResInterface;
  * Class ControlPanelController
  * @package Cocode\controllers
  */
-class TestController
+class TestController extends Controller
 {
     /**
-     * @var $slimApp References to slim app instance
-     */
-    private $slimApp;
-
-    /**
-     * ControlPanelController constructor.
+     * Controller constructor.
      * @param $app
      */
     public function __construct($app)
     {
-        // Create a reference to Slim App to work with its methods.
-        $this->slimApp = $app;
+        parent::__construct($app);
     }
 
     /**
