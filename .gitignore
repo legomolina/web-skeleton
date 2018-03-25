@@ -1,4 +1,10 @@
 .idea/
 
+.htaccess
+
+app/Config/Constants.php
+app/cache
+public_html/uploads
+
 node_modules/
 vendor/
