@@ -39,7 +39,7 @@ Ubuntu users can type this (as sudo):
 
 I've configured this skeleton to split backend (private) part from frontend (public) part and from the precompiled things.
 
-![Tree view](https://imgur.com/a/iK5wP "Tree view")
+![Tree view](https://imgur.com/download/3Pxtcvq "Tree view")
 
 > It's important that all controllers are in the ```/App/Controllers``` folder or subfolders because the bootloader loads and injects them from that route.
 
