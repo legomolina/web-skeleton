@@ -1,3 +1,3 @@
 <?php
 
-$app->get('/', 'TestController:testMethod');
+$app->get('/', 'TestController:render');

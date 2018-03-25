@@ -1,5 +1,15 @@
-# Web skeleton
-Web skeleton ready to work with Slim and SASS
+# Web skeleton v2
+Web skeleton ready to work with Slim and SCSS.
+
+### New v2
+- Changed project structure to split php, precompiled resources and public documents.
+- Now supports complete Handlebars templates rendering with Gulp task.
+- Includes Eloquent ORM for Database Management ready to use.
+- Includes CSRF protection with ```slim/csrf``` package and middleware
+- Instead of using php-view, now I'm using twig view, a more powerful template engine.
+- Added new gulp task to minify and copy useful code into new dist folder, ready to upload to your production server.
+
+### Install
 
 Template is ready to execute
 ```shell
@@ -12,43 +22,32 @@ npm install
 ```
 and it will include all vendor and npm packages.
 
-<p id="console">If you want to execute gulp from your console you need to install it first (I prefer using it directly from the IDE):</p>
+If you want to execute gulp from your console you need to install it first:
 
 ```shell
 npm install --global gulp-cli
 ```
 
+You can copy the ```/apache.conf``` file to your apache2 web server sites-available folder. It includes all necessary statements to make it work.
+
+Remember to grant access to apache user to write files into ```/cache``` and ```/public_html/uploads``` folders.
+Ubuntu users can type this (as sudo):
+
+    chown -R www-data:www-data cache public_html/uploads
+
 ### Files hierarchy
 
-<div>I've configured this skeleton to split backend (private) part from frontend (public) part.</div>
+I've configured this skeleton to split backend (private) part from frontend (public) part and from the precompiled things.
 
-![Tree view](http://imgur.com/ZcleGvB.png "Tree view")
+![Tree view](https://imgur.com/a/iK5wP "Tree view")
 
-<div>This is because apache virtualhost points to /public_html in *documentRoot* directive and prevents users accessing /app directory from URL.</div>
+> It's important that all controllers are in the ```/App/Controllers``` folder or subfolders because the bootloader loads and injects them from that route.
 
-Besides, I modified permissions on /public_html/uploads directory to give the control to www-data user and group (Debian x64) in order to allow php to write and read files (and just php).
+### Gulp
+Once you have downloaded *gulp* just type ```gulp``` on a shell window in root folder and it executes the default task that compiles SCSS into CSS, compiles Handlebars templates and enables the LiveReload to watch changes.
 
-### Custom autoloader
+- SCSS takes the ```/resources/scss/style.scss``` file and generates the ```/public_html/css/style.css``` that you should include into your html.
+- Handlebars takes the ```/resources/templates/*.handlebars``` handlebars files and compiles them into the ```/public_html/views/templates.js```.
+- LiveReload watches for any change in the project root directory and compile scss and handlebars files.
 
-I've created a custom autoloader ([/app/project_autoloader.php](https://github.com/legomolina/web-skeleton/blob/master/app/project_autoloader.php)) to load all neccessary classes without requiring them one by one, so you just need to use namespaces as I'm using at examples and you are done.
-
-### SASS and LiveReload
-
-Installing npm dependencies you download *gulp*. Once you have it, just type ```gulp``` [on a shell window](#console) in your project's root and hit enter and now, you have a file watcher for all your project files and SASS compiler.
-- SASS takes [/public_html/styles/sass/style.scss](https://github.com/legomolina/web-skeleton/blob/master/public_html/styles/sass/style.scss) and all imports done in this file (and just this file - you need to import all scss files you want to use in your project into this one-) and generates a style.css (file you need to link into your project) file into css folder.
-- Live reload is a file watcher that reloads your linked web browser everytime a file is saved, included or deleted. You need to download browser extension for LiveReload in order to run it.
-
-### Database connection
-
-Database connection is located on [/app/utils/DBConnection.php](https://github.com/legomolina/web-skeleton/blob/master/app/utils/DBConnection.php)
-and it uses mysqli function to create the connection.
-
-Now you only need to configure database credentials located on 
-[/app/config/Constants.php](https://github.com/legomolina/web-skeleton/blob/master/app/config/Constants.php).
-
-Connection is instantiated in 
-[/public_html/index.php](https://github.com/legomolina/web-skeleton/blob/master/public_html/index.php#L31)
-and due to this, you can use it everywhere in your application just calling it with 
-```php
-global $connection;
-```
+I've also included a ```production``` task that executes the uglify and minify tasks and copies the required files into a new folder called ```/dist``` that you can safely upload to your server.

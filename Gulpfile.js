@@ -42,10 +42,10 @@ var onError = function(error) {
 // compile all your Sass
 gulp.task('sass', function () {
 
-    gulp.src(['./resources/scss/style.scss'])
+    gulp.src(['resources/scss/style.scss'])
 
         .pipe(sass({
-            includePaths: ['./resources/sass'],
+            includePaths: ['resources/sass'],
             outputStyle: 'expanded',
             errLogToConsole: false
         })).on("error", onError)
@@ -54,28 +54,28 @@ gulp.task('sass', function () {
             "last 2 version", "> 1%", "ie 8", "ie 7"
         ))
 
-        .pipe(gulp.dest('./public_html/css'))
+        .pipe(gulp.dest('public_html/css'))
 });
 
 // Uglify JS
 gulp.task('uglify', function () {
-    gulp.src('./public_html/scripts/**/*.js')
+    gulp.src('public_html/scripts/**/*.js')
         .pipe(uglify())
-        .pipe(gulp.dest('./dist/scripts'));
+        .pipe(gulp.dest('dist/public_html/scripts'));
 });
 
 // Images
 gulp.task('imagemin', function () {
-    gulp.src('./public_html/images/**/*')
+    gulp.src('public_html/images/**/*')
         .pipe(imagemin())
-        .pipe(gulp.dest('./dist/images'));
+        .pipe(gulp.dest('dist/public_html/images'));
 });
 
 // Stats and Things
 gulp.task('stats', function () {
-    gulp.src('./dist/**/*')
+    gulp.src('dist/**/*')
         .pipe(size())
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('dist'));
 });
 
 // Compile handlebars
@@ -112,16 +112,21 @@ gulp.task('default', ["sass", "handlebars"], function () {
 
 gulp.task('production', ["sass", "handlebars", "uglify", "imagemin"], function() {
     gulp.src([
-        './public_html/**/*.*',
-        './public_html/**/.*',
-        '!./public_html/{images,images/**}',
-        '!./public_html/{scripts,scripts/**}',
-        '!./resources/{scss,scss/**}',
-        '!./resources/{templates, templates/**}'
+        'public_html/**/*.*',
+        'public_html/**/.*',
+        '!public_html/{images,images/**}',
+        '!public_html/{scripts,scripts/**}',
+        '!public_html/{uploads,uploads/**}'
     ])
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('dist/public_html'));
 
-    gulp.src('./public_html/css')
+    gulp.src('composer.json').pipe(gulp.dest('dist'));
+    gulp.src(['app/**/*.*', 'app/**/.*']).pipe(gulp.dest('dist/app'));
+    gulp.src(['bootstrap/**/*.*', 'bootstrap/**/.*']).pipe(gulp.dest('dist/bootstrap'));
+    gulp.src(['resources/views/**/*.*', 'resources/views/**/.*']).pipe(gulp.dest('dist/resources/views'));
+    gulp.src(['vendor/**/*.*', 'vendor/**/.*']).pipe(gulp.dest('dist/vendor'));
+
+    gulp.src('public_html/css')
         .pipe(minifycss())
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('dist/public_html'));
 });
