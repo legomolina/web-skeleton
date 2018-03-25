@@ -1,0 +1,62 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: $primaryFontFamily, sans-serif;
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+
+  color: color(black);
+
+  & .wrapper {
+    width: 1170px;
+    margin: 0 auto;
+
+    @include breakpoint(xl) {
+      width: 970px;
+    }
+
+    @include breakpoint(lg) {
+      width: 750px;
+    }
+
+    @include breakpoint(md) {
+      width: 90%;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $secondaryFontFamily, sans-serif;
+  text-align: center;
+  font-weight: 300;
+
+  & > span {
+    color: color(blue);
+  }
+}
+
+p {
+  line-height: 1.42857143;
+}
+
+a, a:link, a:visited {
+  color: inherit;
+  text-decoration: inherit;
+
+  transition: all .3s;
+}
+
+a:hover {
+  color: color(blue);
+  text-decoration: inherit;
+}
+
+.material-icons {
+  font-size: inherit;
+  vertical-align: middle;
+}

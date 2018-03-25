@@ -1,0 +1,134 @@
+.button {
+  $backgroundColor: color(white);
+  $foreColor: color(black);
+
+  display: inline-block;
+
+  background-color: $backgroundColor;
+  color: $foreColor;
+
+  cursor: pointer;
+  text-align: center;
+
+  position: relative;
+
+  margin: 0;
+  padding: 10px 30px;
+  width: initial;
+
+  font-size: 1em;
+
+  outline: none;
+  border: none;
+  border-radius: 2px;
+
+  text-transform: uppercase;
+
+  box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .2);
+
+  transition: background-color .3s, box-shadow .3s;
+
+  &:focus, &:hover, &.focus {
+    background-color: darken($backgroundColor, 5%);
+
+    outline: none;
+  }
+
+  &:active, &.active {
+    box-shadow: none;
+  }
+
+  &:disabled, &.disabled {
+    $backgroundColor: transparentize(color(light_grey), .3);
+
+    background-color: $backgroundColor !important;
+    color: $foreColor !important;
+
+    cursor: default;
+    box-shadow: none !important;
+
+    &:focus, &:hover, &.focus {
+      background-color: $backgroundColor !important;
+    }
+  }
+
+  &.button-file-upload {
+    & > input[type="file"] {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &.button-inverted {
+    $backgroundColor: color(black);
+    $foreColor: color(white);
+
+    background-color: $backgroundColor;
+    color: $foreColor;
+
+    &:focus, &:hover, &.focus {
+      background-color: darken($backgroundColor, 5%);
+    }
+  }
+
+  &.button-primary {
+    $backgroundColor: color(blue);
+    $foreColor: color(white);
+
+    background-color: $backgroundColor;
+    color: $foreColor;
+
+    &:focus, &:hover, &.focus {
+      background-color: darken($backgroundColor, 5%);
+    }
+  }
+
+  &.button-success {
+    $backgroundColor: color(green);
+    $foreColor: color(white);
+
+    background-color: $backgroundColor;
+    color: $foreColor;
+
+    &:focus, &:hover, &.focus {
+      background-color: darken($backgroundColor, 5%);
+    }
+  }
+
+  &.button-error {
+    $backgroundColor: color(red);
+    $foreColor: color(white);
+
+    background-color: $backgroundColor;
+    color: $foreColor;
+
+    &:focus, &:hover, &.focus {
+      background-color: darken($backgroundColor, 5%);
+    }
+  }
+
+  &.button-link {
+    box-shadow: none;
+  }
+
+  &.button-stretch {
+    padding: 5px 10px;
+  }
+
+  &.button-primary--forecolor {
+    color: color(blue);
+  }
+
+  &.button-success--forecolor {
+    color: color(green);
+  }
+
+  &.button-error--forecolor {
+    color: color(red);
+  }
+}

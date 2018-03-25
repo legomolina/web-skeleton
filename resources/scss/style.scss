@@ -1,0 +1,17 @@
+//Configform_control
+@import "config/variables";
+@import "config/mixins";
+@import "general";
+
+//Clases
+@import "common_classes";
+
+//Partials
+@import "partials/form_control";
+@import "partials/buttons";
+
+//Functionalities
+@import "functionalities/aligner";
+@import "functionalities/shadow";
+@import "functionalities/colors";
+@import "functionalities/text";
