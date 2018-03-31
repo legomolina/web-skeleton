@@ -30,67 +30,6 @@
   user-select: none;
 }
 
-//custom theme for tooltips
-.tippy-tooltip.custom-theme {
-  background-color: color(blue);
-}
-
-.tippy-tooltip.custom-theme .tippy-backdrop {
-  background-color: color(blue);
-}
-
-.toggle {
-  display: none !important;
-
-  &::selection {
-    background: none !important;
-  }
-
-  & + .toggle-button {
-    outline: 0;
-    display: block;
-    width: 4em !important;
-    height: 2em !important;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-    background: color(light_grey);
-    border-radius: 2em;
-    padding: 2px;
-    transition: all .4s ease;
-
-    &:after,
-    &:before {
-      position: relative;
-      display: block;
-      content: "";
-      width: 50%;
-      height: 100%;
-    }
-
-    &:after {
-      left: 0;
-      border-radius: 50%;
-      background: #fff;
-      transition: all .2s ease;
-    }
-
-    &:before {
-      display: none;
-    }
-  }
-
-  &:checked + .toggle-button {
-    background: lighten(color(light_grey), 10%);
-  }
-
-  &:checked + .toggle-button:after {
-    left: 50%;
-    background: color(blue);
-  }
-}
-
-//OTROS
 .no-scroll {
   overflow: hidden;
 }
